@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "admin-template-core3.1", "admin-template-core3.1.csproj", "{20C12610-46E2-4F07-856C-7E08DB87EF7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "admin-template-core3.1", "admin-template-core3.1.csproj", "{20C12610-46E2-4F07-856C-7E08DB87EF7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B330FD8-1B4C-4F1F-B991-D8ADA4F801F6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

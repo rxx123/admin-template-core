@@ -1,3 +1,4 @@
+using Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Extensions.CustomApiVersion;
 
 namespace admin_template_core3._1
 {
@@ -24,6 +26,7 @@ namespace admin_template_core3._1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerSetup();
             services.AddControllers();
         }
 
@@ -34,7 +37,17 @@ namespace admin_template_core3._1
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                //c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
 
+                //根据版本名称倒序 遍历展示
+                typeof(ApiVersions).GetEnumNames().OrderByDescending(e => e).ToList().ForEach(version =>
+                {
+                    c.SwaggerEndpoint($"/swagger/{version}/swagger.json", $"{version}");
+                });
+            });
             app.UseRouting();
 
             app.UseAuthorization();
